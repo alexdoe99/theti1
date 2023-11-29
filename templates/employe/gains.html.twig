@@ -1,0 +1,98 @@
+{% extends 'baseEmploye.html.twig' %}
+
+{% block title %}Gains{% endblock %}
+
+{% block body %}
+<style>
+
+
+    .custom-table {
+        margin: auto;
+        width: 80%; /* You can adjust the width as needed */
+        background-color: #f4d9e7; /* Light pink background */
+        border-collapse: collapse;
+    }
+
+    .custom-table th,
+    .custom-table td {
+        border: 1px solid #ddd; /* Adding a light border to your table cells */
+        padding: 8px; /* Adding some padding for table cell content */
+        text-align: center; /* Center aligning the text */
+    }
+
+    .custom-button {
+        width: 100%; /* Make the button expand the full width of the cell */
+        padding: 5px 10px; /* Adding some padding */
+        border: none;
+        border-radius: 5px; /* Rounded corners for the button */
+        background-color: #28a745; /* Bootstrap success color */
+        color: white;
+        cursor: pointer; /* Change cursor to pointer on hover */
+    }
+
+    .custom-button:hover {
+        background-color: #218838; /* A slightly darker shade on hover */
+    }
+
+    .alert-center {
+        width: 50%;
+        margin: 20px auto; /* Centering the alert and adding some margin */
+    }
+    .custom-alert1 {
+        background-color: #dc3545; /* Bootstrap red */
+        color: white; /* Text color */
+        padding: 15px; /* Alert padding */
+        border-radius: 5px; /* Rounded corners */
+        border: none;
+        margin-bottom: 20px; /* Space below the alert */
+        width: 50%; /* Width of the alert */
+        margin: 20px auto; /* Centering the alert */
+    }
+</style>
+
+<div class="container">
+    <div class="justify-content-center row">
+        {% for message in app.session.flashbag.get('Success') %}
+            <div class="alert alert-dismissible custom-alert">
+            <h4 class="alert-heading text-center">{{ message }}</h4>
+        </div>
+        {% endfor %}
+
+        {% if wins %}
+            <table class="table custom-table mt-4">
+                <thead>
+                    <tr>
+                        <th>Utilisateur</th>
+                        <th>Type de gain</th>
+                        <th>L'état de gain</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for win in wins %}
+                        <tr>
+                            <td>{{ win.user.surname }}</td>
+                            <td>{{ win.ticket.title }}</td>
+                            <td>
+                                {% if win.send == 0 %}
+                                    <span class="badge bg-warning">Gains pas encore distribué</span>
+                                {% else %}
+                                    <span class="badge bg-info">Gains est déja distribué</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if win.send == 0 %}
+                                    <form method="POST" action="{{ path('app_code_send') }}">
+                                        <input type="hidden" value="{{ win.id }}" name="gain_id">
+                                        <button type="submit" class="custom-button">Donner le gain</button>
+                                    </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

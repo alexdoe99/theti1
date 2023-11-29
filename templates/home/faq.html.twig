@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %} 
+
+
+{% block body %}
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+  }
+  .faq-section {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 50px;
+    border-radius: 5px;
+    padding: 15px;
+  }
+  .faq-toggle {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    padding: 14px 20px;
+    width: 50%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    border-bottom: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  .faq-toggle:hover, .faq-toggle.active {
+    background-color: #66bb6a;
+  }
+  .faq-content {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  .faq-content.active {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="faq-section">
+  <button type="button" onclick="toggleFaq('faq1')" class="faq-toggle">Comment puis-je participer au jeu concours actuel ?</button>
+  <div id="faq1" class="faq-content">
+Pour participer à notre jeu concours en cours, suivez ces étapes simples :
+Faites un achat en boutique ou en ligne d'une valeur minimale de 49€.
+Consultez notre site web et créez un compte si vous n'en avez pas déjà un. Si vous avez déjà un compte, connectez vous.
+Une fois connecté, remplissez le formulaire de participation au jeu concours disponible sur notre site web.  </div>
+
+  <button type="button" onclick="toggleFaq('faq2')" class="faq-toggle">Pouvez-vous me parler de vos méthodes de fabrication à la main ?</button>
+  <div id="faq2" class="faq-content">
+Chez nous, chaque feuille de thé est manipulée avec soin par nos artisans expérimentés. Le fait de préparer nos thés à la main nous permet de contrôler chaque étape du processus pour garantir une qualité supérieure et des saveurs uniques.
+  </div>
+
+  <button type="button" onclick="toggleFaq('faq3')" class="faq-toggle">Quelles sont les récompenses que je peux gagner ?</button>
+  <div id="faq3" class="faq-content">
+Les participants au jeu concours ont la chance de remporter des coffrets-cadeaux spéciaux contenant une sélection de nos thés biologiques faits à la main, ainsi que des accessoires de thé élégants.
+  </div>
+
+  <button type="button" onclick="toggleFaq('faq4')" class="faq-toggle">Qu'est-ce qui distingue nos thés des autres ?</button>
+  <div id="faq4" class="faq-content">
+Notre gamme de thés se démarque par son engagement envers la qualité biologique et l'artisanat. Tous nos thés sont soigneusement sélectionnés parmi les meilleures récoltes biologiques et sont préparés à la main pour garantir une expérience exceptionnelle.
+  </div>
+</div>
+
+<script>
+  function toggleFaq(faqId) {
+    var faqs = document.getElementsByClassName('faq-content');
+    for (var i = 0; i < faqs.length; i++) {
+      faqs[i].classList.remove('active');
+    }
+    var faq = document.getElementById(faqId);
+    faq.classList.add('active');
+
+    var toggles = document.getElementsByClassName('faq-toggle');
+    for (var i = 0; i < toggles.length; i++) {
+      toggles[i].classList.remove('active');
+    }
+    event.currentTarget.classList.add('active');
+  }
+</script>
+
+
+ {% endblock %}

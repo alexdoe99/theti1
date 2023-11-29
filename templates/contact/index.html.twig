@@ -1,0 +1,77 @@
+{# templates/contact/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Ajoutez des styles CSS personnalisés ici */
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        /* ... (styles existants) ... */
+        
+        .success-message {
+            color: #4caf50;
+            margin-top: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Contactez-nous</h1>
+    <p>Utilisez le formulaire ci-dessous pour nous contacter :</p>
+
+    {% if form_submitted %}
+        <p class="success-message">Votre message a été envoyé avec succès !</p>
+    {% endif %}
+
+    {# Exemple stylisé de formulaire de contact (à personnaliser) #}
+    <form method="post">
+        <label for="email">Votre adresse e-mail :</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Votre message :</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Envoyer</button>
+    </form>
+{% endblock %}
