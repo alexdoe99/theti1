@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://127.0.0.1:8000/</loc>
+   </url>
+   <url>
+      <loc>https://127.0.0.1:8000/login</loc>
+   </url>
+   <url>
+      <loc>https://127.0.0.1:8000/register</loc>
+   </url>
+   <url>
+      <loc>https://127.0.0.1:8000/contact</loc>
+   </url>
+   <url>
+      <loc>https://127.0.0.1:8000/about</loc>
+   </url>
+   <url>
+      <loc>https://127.0.0.1:8000/The</loc>
+   </url>
+   <url>
+      <loc>https://127.0.0.1:8000/faq</loc>
+   </url>
+   <url>
+      <loc>https://127.0.0.1:8000/produit</loc>
+   </url>
+    <url>
+      <loc>https://127.0.0.1:8000/terms-and-conditions</loc>
+   </url>
+
+</urlset>
